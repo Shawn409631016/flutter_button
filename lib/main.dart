@@ -34,31 +34,26 @@ void main() {
     ),
   );
   var appBody = Center(
-    child: OutlinedButton(
-      style: outlinedButtonStyle,
-      onPressed: (){},
-      child: Text('OutlinedButton')
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        OutlinedButton(
+            style: outlinedButtonStyle,
+            onPressed: (){},
+            child: Text('OutlinedButton')
+        ),
+        ElevatedButton(
+            style: elevatedButtonStyle,
+            onPressed: (){},
+            child: Text('ElevatedButton')
+        ),
+        TextButton(
+            style: textButtonStyle,
+            onPressed: (){},
+            child: Text('TextButton')
+        )
+      ],
     ),
-    // child: Column(
-    //   mainAxisAlignment: MainAxisAlignment.center,
-    //   children: <Widget>[
-    //     OutlinedButton(
-    //         style: outlinedButtonStyle,
-    //         onPressed: (){},
-    //         child: Text('OutlinedButton')
-    //     ),
-    //     ElevatedButton(
-    //         style: elevatedButtonStyle,
-    //         onPressed: (){},
-    //         child: Text('ElevatedButton')
-    //     ),
-    //     TextButton(
-    //         style: textButtonStyle,
-    //         onPressed: (){},
-    //         child: Text('TextButton')
-    //     )
-    //   ],
-    // ),
   );
 
   var appBar = AppBar(
