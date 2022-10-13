@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 void main() {
   const appTitle = Text('Flutter button');
 
-  final ButtonStyle flatButtonStyle = TextButton.styleFrom(
+  final ButtonStyle textButtonStyle = TextButton.styleFrom(
     foregroundColor: Colors.blue,
     minimumSize: const Size(88, 36),
     padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -12,7 +12,7 @@ void main() {
     ),
   );
 
-  final ButtonStyle raisedButtonStyle = ElevatedButton.styleFrom(
+  final ButtonStyle elevatedButtonStyle = ElevatedButton.styleFrom(
     foregroundColor: Colors.white,
     backgroundColor: Colors.blue,
     minimumSize: const Size(88, 36),
@@ -22,7 +22,7 @@ void main() {
     ),
   );
 
-  final ButtonStyle outlineButtonStyle = OutlinedButton.styleFrom(
+  final ButtonStyle outlinedButtonStyle = OutlinedButton.styleFrom(
     foregroundColor: Colors.blue,
     minimumSize: const Size(88, 36),
     side: const BorderSide(
@@ -34,26 +34,31 @@ void main() {
     ),
   );
   var appBody = Center(
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        OutlinedButton(
-            style: outlineButtonStyle,
-            onPressed: (){},
-            child: Text('OutlinedButton')
-        ),
-        ElevatedButton(
-            style: raisedButtonStyle,
-            onPressed: (){},
-            child: Text('RaisedButton')
-        ),
-        TextButton(
-            style: flatButtonStyle,
-            onPressed: (){},
-            child: Text('FlatButton')
-        )
-      ],
+    child: OutlinedButton(
+      style: outlinedButtonStyle,
+      onPressed: (){},
+      child: Text('OutlinedButton')
     ),
+    // child: Column(
+    //   mainAxisAlignment: MainAxisAlignment.center,
+    //   children: <Widget>[
+    //     OutlinedButton(
+    //         style: outlinedButtonStyle,
+    //         onPressed: (){},
+    //         child: Text('OutlinedButton')
+    //     ),
+    //     ElevatedButton(
+    //         style: elevatedButtonStyle,
+    //         onPressed: (){},
+    //         child: Text('ElevatedButton')
+    //     ),
+    //     TextButton(
+    //         style: textButtonStyle,
+    //         onPressed: (){},
+    //         child: Text('TextButton')
+    //     )
+    //   ],
+    // ),
   );
 
   var appBar = AppBar(
