@@ -1,74 +1,64 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
-void main() {
-  const appTitle = Text('Flutter button');
+void main(){
+  runApp(MyApp());
+}
 
-  final ButtonStyle textButtonStyle = TextButton.styleFrom(
-    foregroundColor: Colors.blue,
-    minimumSize: const Size(88, 36),
-    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-    shape: const RoundedRectangleBorder(
-      borderRadius: BorderRadius.all(Radius.circular(2.0)),
-    ),
-  );
-
-  final ButtonStyle elevatedButtonStyle = ElevatedButton.styleFrom(
-    foregroundColor: Colors.white,
-    backgroundColor: Colors.blue,
-    minimumSize: const Size(88, 36),
-    padding: const EdgeInsets.symmetric(horizontal: 16),
-    shape: const RoundedRectangleBorder(
-      borderRadius: BorderRadius.all(Radius.circular(2)),
-    ),
-  );
-
-  final ButtonStyle outlinedButtonStyle = OutlinedButton.styleFrom(
-    foregroundColor: Colors.blue,
-    minimumSize: const Size(88, 36),
-    side: const BorderSide(
-      color: Colors.blue,
-    ),
-    padding: const EdgeInsets.symmetric(horizontal: 16),
-    shape: const RoundedRectangleBorder(
-      borderRadius: BorderRadius.all(Radius.circular(2)),
-    ),
-  );
-  var appBody = Center(
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        OutlinedButton(
-            style: outlinedButtonStyle,
-            onPressed: (){},
-            child: Text('OutlinedButton')
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context){
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('flutter button'),
         ),
-        ElevatedButton(
-            style: elevatedButtonStyle,
-            onPressed: (){},
-            child: Text('ElevatedButton')
+        body: Body(),
+      ),
+    );
+  }
+
+
+
+}
+
+class Body extends StatelessWidget{
+  const Body({Key? key}) : super(key: key);
+
+  void showSnackbar(BuildContext context){
+    final snackBar = SnackBar(
+      content: Text('Hi, I am SnackBar'),
+      duration: Duration(seconds: 3),
+      backgroundColor: Colors.blue,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      action: SnackBarAction(
+        label: "Toast訊息",
+        textColor: Colors.white,
+        onPressed: ()=> Fluttertoast.showToast(
+          msg: '你按下SnackBar',
+          toastLength: Toast.LENGTH_LONG,
+          gravity: ToastGravity.CENTER,
+          backgroundColor: Colors.blue,
+          textColor: Colors.white,
+          fontSize: 20
         ),
-        TextButton(
-            style: textButtonStyle,
-            onPressed: (){},
-            child: Text('TextButton')
-        )
-      ],
-    ),
-  );
+      ),
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
 
-  var appBar = AppBar(
-    title: appTitle,
-    backgroundColor: Colors.lightBlue[400],
-  );
-
-  var app = MaterialApp(
-    home: Scaffold(
-      appBar: appBar,
-      body: appBody,
-      backgroundColor: Color(0xFFFFFFFF),
-    ),
-  );
-
-
-  runApp(app);
+  @override
+  Widget build(BuildContext context){
+    return Center(
+      child: MaterialButton(
+        child: Text('Show SnackBar'),
+        color: Colors.blue,
+        textColor: Colors.white,
+        onPressed: (){
+          showSnackbar(context);
+        },
+      ),
+    );
+  }
 }
